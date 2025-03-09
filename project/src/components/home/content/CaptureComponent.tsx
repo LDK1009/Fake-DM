@@ -65,25 +65,29 @@ const CaptureComponent = () => {
   }, [chatList]);
 
   return (
-    <Container>
-      <ChatingRoomContainer ref={ref} style={{ width: contentWidth, height: contentHeight }}>
-        <Header />
-        <ChatingScroll ref={chatingScrollRef}>
-          <ChatProfile />
-          {chatList && RenderChatList}
-        </ChatingScroll>
-        <Footer />
-      </ChatingRoomContainer>
-      <CommonButton onClick={captureImage} startIcon={<DownloadOutlinedIcon />} style={{ marginTop: "12px" }}>
-        이미지 저장
-      </CommonButton>
-    </Container>
+    <>
+      <Container>
+        <ChatingRoomContainer ref={ref} style={{ width: contentWidth, height: contentHeight }}>
+          <Header />
+          <ChatingScroll ref={chatingScrollRef}>
+            <ChatProfile />
+            {chatList && RenderChatList}
+          </ChatingScroll>
+          <Footer />
+        </ChatingRoomContainer>
+        <SaveButton onClick={captureImage} startIcon={<DownloadOutlinedIcon />}>
+          이미지 저장
+        </SaveButton>
+      </Container>
+    </>
   );
 };
 
 export default CaptureComponent;
 
-const Container = styled("div")``;
+const Container = styled("div")`
+  ${mixinFlex("column")}
+`;
 
 const ChatingRoomContainer = styled("div")`
   ${mixinFlex("column")};
@@ -112,4 +116,11 @@ const ChatingScroll = styled("div")`
   scrollbar-width: none;
   /* IE and Edge */
   -ms-overflow-style: none;
+`;
+
+const SaveButton = styled(CommonButton)`
+  margin-top: 12px;
+  width: 90%;
+  height: 50px;
+  align-self: center;
 `;
