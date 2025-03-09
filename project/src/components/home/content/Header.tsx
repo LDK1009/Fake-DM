@@ -15,9 +15,15 @@ const Header = () => {
         <Name>{otherInfo.name}</Name>
       </ImageNameWrap>
       <IconWrap>
-        <InstagramCallIcon />
-        <InstagramCameraIcon />
-        <InstagramInfoIcon />
+        <Icon>
+          <InstagramCallIcon />
+        </Icon>
+        <Icon>
+          <InstagramCameraIcon />
+        </Icon>
+        <Icon>
+          <InstagramInfoIcon />
+        </Icon>
       </IconWrap>
     </Container>
   );
@@ -39,8 +45,6 @@ const Container = styled("div")`
 
   & svg {
     color: white;
-    box-sizing: content-box;
-    padding: 8px;
   }
 `;
 
@@ -61,4 +65,12 @@ const Name = styled(Typography)`
   color: #f5f5f5;
 `;
 
-const IconWrap = styled("div")``;
+const IconWrap = styled("div")`
+  ${mixinFlex("row")};
+`;
+
+const Icon = styled("div")`
+  ${mixinFlex("column")};
+  width: 40px;
+  height: 40px;
+`;

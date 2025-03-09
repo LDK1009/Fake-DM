@@ -28,17 +28,27 @@ const Footer = () => {
     <Container>
       <InputContainer>
         <EmojiInputWrap>
-          <InstagramEmojiIcon />
+          <Icon>
+            <InstagramEmojiIcon />
+          </Icon>
           <Input value={inputText} onChange={(e) => setInputText(e.target.value)} placeholder="메시지 입력..." />
         </EmojiInputWrap>
         {inputText ? (
           <SendText onClick={handleSubmit}>Send</SendText>
         ) : (
           <IconWraper>
-            <InstagramMikeIcon />
-            <InstagramImageIcon />
-            <InstagramStickerIcon />
-            <InstagramLikeIcon />{" "}
+            <Icon>
+              <InstagramMikeIcon />
+            </Icon>
+            <Icon>
+              <InstagramImageIcon />
+            </Icon>
+            <Icon>
+              <InstagramStickerIcon />
+            </Icon>
+            <Icon>
+              <InstagramLikeIcon />
+            </Icon>
           </IconWraper>
         )}
       </InputContainer>
@@ -60,8 +70,6 @@ const Container = styled("div")`
 
   & svg {
     color: white;
-    padding: 8px;
-    box-sizing: content-box;
   }
 `;
 
@@ -96,11 +104,17 @@ const IconWraper = styled("div")`
   ${mixinFlex("row")}
 `;
 
+const Icon = styled("div")`
+  ${mixinFlex("column")};
+  width: 40px;
+  height: 40px;
+`;
+
 const SendText = styled("button")`
-  all: unset;  /* 모든 기본 스타일 제거 */
+  all: unset; /* 모든 기본 스타일 제거 */
   font-size: 14px;
   font-weight: 600;
-  line-height: 18px;  /* 수정: 18x → 18px */
+  line-height: 18px; /* 수정: 18x → 18px */
   color: rgb(0, 149, 246);
-  cursor: pointer;  /* 버튼 클릭 시 커서 스타일 추가 */
+  cursor: pointer; /* 버튼 클릭 시 커서 스타일 추가 */
 `;
