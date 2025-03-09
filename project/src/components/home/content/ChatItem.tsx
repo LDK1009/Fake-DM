@@ -45,6 +45,7 @@ const SpeechBubbleContainer = styled("div")<SpeechBubbleContainerType>(({ user }
 }));
 
 const Text = styled("div")`
+  max-width: "160px";
   width: 100%;
   white-space: pre-wrap;
 `;

@@ -1,5 +1,5 @@
 import html2canvas from "html2canvas";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useChatStore } from "../../../store";
 import ChatItem from "./ChatItem";
 import { styled } from "@mui/material";
@@ -8,6 +8,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { mixinFlex } from "../../../styles/mixins";
 import Header from "./Header";
 import Footer from "./Footer";
+import ChatProfile from "./ChatProfile";
 
 const CaptureComponent = () => {
   // Variable
@@ -23,6 +24,7 @@ const CaptureComponent = () => {
 
   // Hooks
   const ref = useRef<HTMLDivElement>(null);
+  const chatingScrollRef = useRef<HTMLDivElement>(null);
 
   // Store
   const { chatList } = useChatStore();
@@ -46,17 +48,29 @@ const CaptureComponent = () => {
     link.click();
   };
 
+  const scrollToBottom = () => {
+    if (chatingScrollRef.current) {
+      chatingScrollRef.current.scrollTop = chatingScrollRef.current.scrollHeight;
+    }
+  };
+
   // ArrayRendering
   const RenderChatList = chatList.map((el) => {
     return <ChatItem key={el.id} data={el} />;
   });
 
+  // useEffect
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatList]);
+
   return (
     <Container>
       <ChatingRoomContainer ref={ref} style={{ width: contentWidth, height: contentHeight }}>
         <Header />
-        <ChatingScroll>
-          <ChatingBox>{chatList ? RenderChatList : "채팅이 없습니다."}</ChatingBox>
+        <ChatingScroll ref={chatingScrollRef}>
+          <ChatProfile />
+          {chatList && RenderChatList}
         </ChatingScroll>
         <Footer />
       </ChatingRoomContainer>
@@ -78,19 +92,24 @@ const ChatingRoomContainer = styled("div")`
   padding: 75px 0px 78px 0px;
 `;
 
-const ChatingBox = styled("div")`
-  width: 100%;
-  height: 100%;
-  ${mixinFlex("column")};
-  align-items: start;
-  justify-content: end;
-  padding: 25px 16px 7px 16px;
-  row-gap: 7px;
-  overflow: scroll;
-`;
-
 const ChatingScroll = styled("div")`
   width: 100%;
-  flex: 1;
-  overflow: scroll;
+  height: 100%;
+
+  ${mixinFlex("column")};
+  align-items: start;
+  justify-content: start;
+  padding: 25px 16px 7px 16px;
+  row-gap: 7px;
+
+  overflow-y: scroll;
+
+  /* Chrome, Safari, Opera*/
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
 `;
