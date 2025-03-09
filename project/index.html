@@ -1,13 +1,46 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Fake-DM</title>
+
+    <!-- 기본 메타데이터 -->
+    <meta name="description" content="Fake-DM | 현실적인 가짜 DM 대화를 만들어 보세요" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph (OG) / SNS 공유용 메타태그 -->
+    <meta property="og:title" content="Fake-DM" />
+    <meta property="og:description" content="Fake-DM | 현실적인 가짜 DM 대화를 만들어 보세요" />
+    <meta property="og:image" content="/icons/og-image.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- PWA 지원을 위한 설정 -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
+    <!-- iOS PWA 추가 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Fake-DM" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- PWA Service Worker 등록 -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => console.log("Service Worker registered:", reg))
+            .catch((err) => console.error("Service Worker registration failed:", err));
+        });
+      }
+    </script>
   </body>
 </html>
