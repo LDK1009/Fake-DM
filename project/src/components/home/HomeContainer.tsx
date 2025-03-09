@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import CaptureComponent from "./content/CaptureComponent";
-import { mixinTopLevelContainer } from "../../styles/mixins";
+import { mixinFlex } from "../../styles/mixins";
 import InputSelectTab from "./content/InputSelectTab";
 
 const HomeContainer = () => {
@@ -15,6 +15,6 @@ const HomeContainer = () => {
 export default HomeContainer;
 
 const Container = styled("div")`
-  ${mixinTopLevelContainer("column")};
+  ${mixinFlex("column")};
   row-gap: 80px;
 `;
