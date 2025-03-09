@@ -9,16 +9,20 @@ type ChatStoreType = {
 
 export type ChatType = {
   id: number;
-  user : "me" | "other";
+  user: "me" | "other";
   type: "text" | "image" | "story";
   content: string;
 };
 
 // 대화 추가
 function addChat(prev: ChatType[], chat: ChatType) {
-  const nextChatList = [...prev, chat];
+  if (chat.content.trim() === "") {
+    return [...prev];
+  } else {
+    const nextChatList = [...prev, chat];
 
-  return nextChatList;
+    return nextChatList;
+  }
 }
 
 // 카운터 스토어 생성
