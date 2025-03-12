@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Fake-DM | 인스타그램 가짜 DM 메시지 | 인스타그램 DM 주작</title>
+    <link>https://fake-dm.vercel.app/</link> 
+    <description>Fake-DM | 인스타그램 가짜 DM 메시지 | 인스타그램 DM 주작</description>
+    <item>
+      <title>콘텐츠 게시글 1</title>
+      <link>https://fake-dm.vercel.app/</link>
+      <description>글 내용 전체(또는 일부)</description>
+      <pubDate>발행시간</pubDate>
+      <guid>https://fake-dm.vercel.app/</guid>
+    </item>
+    <item>
+      <title>콘텐츠 게시글 2</title>
+      <link>https://fake-dm.vercel.app/</link>
+      <description>글 내용 전체(또는 일부)</description>
+      <pubDate>발행시간</pubDate>
+      <guid>https://fake-dm.vercel.app/</guid>
+    </item>
+  </channel>
+</rss>
