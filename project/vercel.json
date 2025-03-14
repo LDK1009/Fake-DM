@@ -1,6 +1,0 @@
-{
-    "redirects": [
-      { "source": "http://real-dm.vercel.app", "destination": "https://real-dm.vercel.app", "permanent": true }
-    ]
-  }
-  
