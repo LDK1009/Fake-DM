@@ -9,6 +9,7 @@ import { mixinFlex } from "../../../styles/mixins";
 import Header from "./Header";
 import Footer from "./Footer";
 import ChatProfile from "./ChatProfile";
+import KakaoAdFit from "./KakaoAdFit";
 
 const CaptureComponent = () => {
   // Variable
@@ -67,6 +68,7 @@ const CaptureComponent = () => {
   return (
     <>
       <Container>
+        <KakaoAdFit unit={"DAN-5IEweHYdlZOPFcMH"} width={320} height={100} disabled={false} />
         <ChatingRoomContainer ref={ref} style={{ width: contentWidth, height: contentHeight }}>
           <Header />
           <ChatingScroll ref={chatingScrollRef}>
